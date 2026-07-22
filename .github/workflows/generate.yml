@@ -34,6 +34,8 @@ jobs:
 
       - name: Generate metadata CSV
         if: always()
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
         working-directory: src
         run: python metadata.py
 
