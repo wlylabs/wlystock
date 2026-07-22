@@ -1,6 +1,7 @@
 import json
 import os
 import random
+import time
 import requests
 from huggingface_hub import InferenceClient
 from huggingface_hub.errors import HfHubHTTPError
@@ -41,20 +42,31 @@ def generate_with_huggingface(prompt: str):
         model="black-forest-labs/FLUX.1-schnell"
     )
 
-def generate_with_pollinations(prompt: str, width=1024, height=1024):
+def generate_with_pollinations(prompt: str, width=1024, height=1024, retries=3):
     url = POLLINATIONS_URL.format(prompt=requests.utils.quote(prompt))
-    params = {
-        "width": width,
-        "height": height,
-        "nologo": "true",
-        "seed": random.randint(1, 999999)
-    }
-    response = requests.get(url, params=params, timeout=120)
-    response.raise_for_status()
+    last_error = None
 
-    from io import BytesIO
-    from PIL import Image
-    return Image.open(BytesIO(response.content))
+    for attempt in range(retries):
+        try:
+            params = {
+                "width": width,
+                "height": height,
+                "nologo": "true",
+                "seed": random.randint(1, 999999)
+            }
+            response = requests.get(url, params=params, timeout=60)
+            response.raise_for_status()
+
+            from io import BytesIO
+            from PIL import Image
+            return Image.open(BytesIO(response.content))
+        except Exception as e:
+            last_error = e
+            print(f"Pollinations attempt {attempt + 1}/{retries} failed: {e}")
+            if attempt < retries - 1:
+                time.sleep(3)
+
+    raise RuntimeError(f"Pollinations failed after {retries} attempts: {last_error}")
 
 def generate_image(prompt: str):
     try:
@@ -67,6 +79,8 @@ def generate_image(prompt: str):
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     topics = load_topics()
+    success_count = 0
+    fail_count = 0
 
     for item in topics:
         for variant in range(1, VARIANTS_PER_TOPIC + 1):
@@ -78,9 +92,13 @@ def main():
                 raw_path = os.path.join(OUTPUT_DIR, f"{file_id}_raw.png")
                 image.save(raw_path)
                 print(f"Saved: {raw_path}")
+                success_count += 1
             except Exception as e:
                 print(f"Skipped {file_id} due to error: {e}")
+                fail_count += 1
                 continue
+
+    print(f"Done. Success: {success_count}, Failed: {fail_count}")
 
 if __name__ == "__main__":
     main()
