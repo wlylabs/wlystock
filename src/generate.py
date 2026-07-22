@@ -4,7 +4,7 @@ import random
 import requests
 from huggingface_hub import InferenceClient
 from huggingface_hub.errors import HfHubHTTPError
-from config import HF_TOKEN, OUTPUT_DIR
+from config import HF_TOKEN, OUTPUT_DIR, VARIANTS_PER_TOPIC
 
 client = InferenceClient(provider="auto", api_key=HF_TOKEN)
 
@@ -69,16 +69,18 @@ def main():
     topics = load_topics()
 
     for item in topics:
-        varied_prompt = build_varied_prompt(item["prompt"])
-        print(f"Generating: {item['id']} -> {varied_prompt}")
-        try:
-            image = generate_image(varied_prompt)
-            raw_path = os.path.join(OUTPUT_DIR, f"{item['id']}_raw.png")
-            image.save(raw_path)
-            print(f"Saved: {raw_path}")
-        except Exception as e:
-            print(f"Skipped {item['id']} due to error: {e}")
-            continue
+        for variant in range(1, VARIANTS_PER_TOPIC + 1):
+            varied_prompt = build_varied_prompt(item["prompt"])
+            file_id = f"{item['id']}-v{variant}"
+            print(f"Generating: {file_id} -> {varied_prompt}")
+            try:
+                image = generate_image(varied_prompt)
+                raw_path = os.path.join(OUTPUT_DIR, f"{file_id}_raw.png")
+                image.save(raw_path)
+                print(f"Saved: {raw_path}")
+            except Exception as e:
+                print(f"Skipped {file_id} due to error: {e}")
+                continue
 
 if __name__ == "__main__":
     main()
