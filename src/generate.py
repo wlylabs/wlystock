@@ -1,5 +1,6 @@
 import json
 import os
+import random
 import requests
 from huggingface_hub import InferenceClient
 from huggingface_hub.errors import HfHubHTTPError
@@ -21,7 +22,12 @@ def generate_with_huggingface(prompt: str):
 
 def generate_with_pollinations(prompt: str, width=1024, height=1024):
     url = POLLINATIONS_URL.format(prompt=requests.utils.quote(prompt))
-    params = {"width": width, "height": height, "nologo": "true"}
+    params = {
+        "width": width,
+        "height": height,
+        "nologo": "true",
+        "seed": random.randint(1, 999999)
+    }
     response = requests.get(url, params=params, timeout=120)
     response.raise_for_status()
 
