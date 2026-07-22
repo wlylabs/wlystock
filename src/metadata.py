@@ -8,14 +8,11 @@ def load_topics(path="../prompts/topics.json"):
     with open(path, "r") as f:
         return json.load(f)
 
-def build_title(caption: str) -> str:
-    return caption.strip().capitalize()
+def fallback_title(item: dict) -> str:
+    return item["id"].replace("-", " ").replace("_", " ").title()
 
-def build_keywords(caption: str, category: str) -> list:
-    words = [w.strip(".,").lower() for w in caption.split() if len(w) > 3]
-    keywords = list(dict.fromkeys(words))  # remove duplicates, keep order
-    keywords.insert(0, category)
-    return keywords[:20]
+def fallback_keywords(item: dict) -> list:
+    return [item["category"], "stock photo", "high quality"]
 
 def build_csv(topics, csv_path):
     fieldnames = ["Filename", "Title", "Keywords", "Category", "Releases"]
@@ -32,9 +29,17 @@ def build_csv(topics, csv_path):
                 print(f"Skipped (file not found): {filename}")
                 continue
 
-            caption = get_caption(final_path)
-            title = build_title(caption)
-            keywords = build_keywords(caption, item["category"])
+            try:
+                caption = get_caption(final_path)
+                title = caption.strip().capitalize()
+                words = [w.strip(".,").lower() for w in caption.split() if len(w) > 3]
+                keywords = list(dict.fromkeys(words))
+                keywords.insert(0, item["category"])
+                keywords = keywords[:20]
+            except Exception as e:
+                print(f"Captioning failed for {filename}, using fallback metadata: {e}")
+                title = fallback_title(item)
+                keywords = fallback_keywords(item)
 
             writer.writerow({
                 "Filename": filename,
