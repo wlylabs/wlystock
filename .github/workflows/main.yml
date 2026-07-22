@@ -1,0 +1,50 @@
+name: Generate Stock Images
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * *"
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Generate images
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        working-directory: src
+        run: python generate.py
+
+      - name: Process images
+        if: always()
+        working-directory: src
+        run: python process.py
+
+      - name: Generate metadata CSV
+        if: always()
+        env:
+          HF_TOKEN: ${{ secrets.HF_TOKEN }}
+        working-directory: src
+        run: python metadata.py
+
+      - name: Upload artifact
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: stock-images-${{ github.run_number }}
+          path: |
+            src/output/*.jpg
+            src/output/metadata.csv
+          retention-days: 7
