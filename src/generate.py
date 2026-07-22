@@ -10,9 +10,30 @@ client = InferenceClient(provider="auto", api_key=HF_TOKEN)
 
 POLLINATIONS_URL = "https://image.pollinations.ai/prompt/{prompt}"
 
+STYLE_MODIFIERS = [
+    "soft morning light",
+    "golden hour lighting",
+    "bright natural daylight",
+    "dramatic side lighting",
+    "warm ambient tones",
+    "cool blue tones",
+    "shot from a slightly elevated angle",
+    "shot at eye level",
+    "close-up detail shot",
+    "wide angle composition",
+    "shallow depth of field, blurred background",
+    "sharp focus, high detail",
+]
+
+QUALITY_SUFFIX = "high resolution, professional stock photography, realistic, sharp focus, well composed"
+
 def load_topics(path="../prompts/topics.json"):
     with open(path, "r") as f:
         return json.load(f)
+
+def build_varied_prompt(base_prompt: str) -> str:
+    modifier = random.choice(STYLE_MODIFIERS)
+    return f"{base_prompt}, {modifier}, {QUALITY_SUFFIX}"
 
 def generate_with_huggingface(prompt: str):
     return client.text_to_image(
@@ -48,9 +69,10 @@ def main():
     topics = load_topics()
 
     for item in topics:
-        print(f"Generating: {item['id']}")
+        varied_prompt = build_varied_prompt(item["prompt"])
+        print(f"Generating: {item['id']} -> {varied_prompt}")
         try:
-            image = generate_image(item["prompt"])
+            image = generate_image(varied_prompt)
             raw_path = os.path.join(OUTPUT_DIR, f"{item['id']}_raw.png")
             image.save(raw_path)
             print(f"Saved: {raw_path}")
