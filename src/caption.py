@@ -1,15 +1,29 @@
 import os
+import base64
 from huggingface_hub import InferenceClient
 from config import HF_TOKEN, OUTPUT_DIR
 
-client = InferenceClient(provider="hf-inference", api_key=HF_TOKEN)
+client = InferenceClient(api_key=HF_TOKEN)
 
 def get_caption(image_path: str) -> str:
-    result = client.image_to_text(
-        image_path,
-        model="Salesforce/blip-image-captioning-base"
+    with open(image_path, "rb") as f:
+        image_bytes = f.read()
+    b64_image = base64.b64encode(image_bytes).decode("utf-8")
+    data_uri = f"data:image/jpeg;base64,{b64_image}"
+
+    completion = client.chat.completions.create(
+        model="Qwen/Qwen2-VL-72B-Instruct",
+        messages=[
+            {
+                "role": "user",
+                "content": [
+                    {"type": "text", "text": "Describe this image in one short sentence, suitable as a stock photo title."},
+                    {"type": "image_url", "image_url": {"url": data_uri}}
+                ]
+            }
+        ]
     )
-    return result.generated_text
+    return completion.choices[0].message.content.strip()
 
 def main():
     captions = {}
