@@ -1,9 +1,9 @@
 name: Generate Stock Images
 
 on:
-  workflow_dispatch:      # trigger manual dari GitHub app/web
+  workflow_dispatch:
   schedule:
-    - cron: "0 2 * * *"   # jalan tiap hari jam 02:00 UTC (opsional)
+    - cron: "0 2 * * *"
 
 jobs:
   generate:
@@ -28,14 +28,17 @@ jobs:
         run: python generate.py
 
       - name: Process images
+        if: always()
         working-directory: src
         run: python process.py
 
       - name: Generate metadata CSV
+        if: always()
         working-directory: src
         run: python metadata.py
 
       - name: Upload artifact
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: stock-images-${{ github.run_number }}
