@@ -12,7 +12,7 @@ def get_caption(image_path: str) -> str:
     data_uri = f"data:image/jpeg;base64,{b64_image}"
 
     completion = client.chat.completions.create(
-        model="Qwen/Qwen2-VL-72B-Instruct",
+        model="Qwen/Qwen2.5-VL-7B-Instruct",
         messages=[
             {
                 "role": "user",
