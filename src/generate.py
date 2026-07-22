@@ -5,7 +5,7 @@ import time
 import requests
 from huggingface_hub import InferenceClient
 from huggingface_hub.errors import HfHubHTTPError
-from config import HF_TOKEN, OUTPUT_DIR, VARIANTS_PER_TOPIC
+from config import HF_TOKEN, OUTPUT_DIR, VARIANTS_PER_TOPIC, TOPICS_PER_RUN
 
 client = InferenceClient(provider="auto", api_key=HF_TOKEN)
 
@@ -31,6 +31,10 @@ QUALITY_SUFFIX = "high resolution, professional stock photography, realistic, sh
 def load_topics(path="../prompts/topics.json"):
     with open(path, "r") as f:
         return json.load(f)
+
+def select_topics_for_run(topics: list) -> list:
+    n = min(TOPICS_PER_RUN, len(topics))
+    return random.sample(topics, n)
 
 def build_varied_prompt(base_prompt: str) -> str:
     modifier = random.choice(STYLE_MODIFIERS)
@@ -78,11 +82,15 @@ def generate_image(prompt: str):
 
 def main():
     os.makedirs(OUTPUT_DIR, exist_ok=True)
-    topics = load_topics()
+    all_topics = load_topics()
+    selected_topics = select_topics_for_run(all_topics)
+    print(f"Selected {len(selected_topics)} topics from pool of {len(all_topics)}: " +
+          ", ".join(t["id"] for t in selected_topics))
+
     success_count = 0
     fail_count = 0
 
-    for item in topics:
+    for item in selected_topics:
         for variant in range(1, VARIANTS_PER_TOPIC + 1):
             varied_prompt = build_varied_prompt(item["prompt"])
             file_id = f"{item['id']}-v{variant}"
