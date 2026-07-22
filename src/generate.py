@@ -4,7 +4,7 @@ import time
 import requests
 from config import HF_TOKEN, SD_MODEL_URL, OUTPUT_DIR
 
-def load_topics(path="prompts/topics.json"):
+def load_topics(path="../prompts/topics.json"):
     with open(path, "r") as f:
         return json.load(f)
 
