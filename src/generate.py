@@ -12,7 +12,8 @@ def load_topics(path="../prompts/topics.json"):
 def generate_image(prompt: str):
     return client.text_to_image(
         prompt,
-        model="black-forest-labs/FLUX.1-schnell"
+        model="black-forest-labs/FLUX.1-schnell",
+        provider="auto"
     )
 
 def main():
