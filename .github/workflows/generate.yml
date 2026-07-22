@@ -39,12 +39,12 @@ jobs:
         working-directory: src
         run: python metadata.py
 
-      - name: Upload artifact
+     - name: Upload artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: stock-images-${{ github.run_number }}
           path: |
-            output/*.jpg
-            output/metadata.csv
+            src/output/*.jpg
+            src/output/metadata.csv
           retention-days: 7
