@@ -3,7 +3,7 @@ import os
 from huggingface_hub import InferenceClient
 from config import HF_TOKEN, OUTPUT_DIR
 
-client = InferenceClient(api_key=HF_TOKEN)
+client = InferenceClient(provider="auto", api_key=HF_TOKEN)
 
 def load_topics(path="../prompts/topics.json"):
     with open(path, "r") as f:
