@@ -38,15 +38,30 @@ def process_image(raw_path: str, output_path: str, ratio_key: str):
 
 def main():
     topics = load_topics()
+    success_count = 0
+    fail_count = 0
+
     for filename in os.listdir(OUTPUT_DIR):
-        if filename.endswith("_raw.png"):
-            raw_path = os.path.join(OUTPUT_DIR, filename)
-            final_name = filename.replace("_raw.png", "_final.jpg")
-            final_path = os.path.join(OUTPUT_DIR, final_name)
-            ratio_key = get_ratio_for_file(filename, topics)
+        if not filename.endswith("_raw.png"):
+            continue
+
+        raw_path = os.path.join(OUTPUT_DIR, filename)
+        final_name = filename.replace("_raw.png", "_final.jpg")
+        final_path = os.path.join(OUTPUT_DIR, final_name)
+        ratio_key = get_ratio_for_file(filename, topics)
+
+        try:
             process_image(raw_path, final_path, ratio_key)
             print(f"Processed: {final_path} ({ratio_key})")
-            os.remove(raw_path)
+            success_count += 1
+        except Exception as e:
+            print(f"Failed to process {filename}, skipping: {e}")
+            fail_count += 1
+        finally:
+            if os.path.exists(raw_path):
+                os.remove(raw_path)
+
+    print(f"Done. Success: {success_count}, Failed: {fail_count}")
 
 if __name__ == "__main__":
     main()
