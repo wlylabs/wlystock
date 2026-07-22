@@ -1,7 +1,7 @@
 [
-  { "id": "gen-01", "prompt": "modern minimalist workspace with laptop and coffee, natural light, clean composition, professional photography", "category": "business" },
-  { "id": "gen-02", "prompt": "fresh colorful vegetables and fruits arranged on wooden kitchen table, healthy lifestyle, vibrant colors, professional food photography", "category": "food" },
-  { "id": "gen-03", "prompt": "person holding smartphone with glowing digital interface icons, futuristic technology concept, cinematic lighting", "category": "technology" },
-  { "id": "gen-04", "prompt": "peaceful mountain landscape with snow peaks at sunrise, dramatic clouds, travel destination, professional landscape photography", "category": "nature" },
-  { "id": "gen-05", "prompt": "person meditating in calm sunlit room with plants, wellness and mindfulness, warm natural lighting, serene atmosphere", "category": "health" }
+  { "id": "gen-01", "prompt": "modern minimalist workspace with laptop and coffee, natural light, clean composition, professional photography", "category": "business", "ratio": "landscape" },
+  { "id": "gen-02", "prompt": "fresh colorful vegetables and fruits arranged on wooden kitchen table, healthy lifestyle, vibrant colors, professional food photography", "category": "food", "ratio": "square" },
+  { "id": "gen-03", "prompt": "person holding smartphone with glowing digital interface icons, futuristic technology concept, cinematic lighting", "category": "technology", "ratio": "portrait" },
+  { "id": "gen-04", "prompt": "peaceful mountain landscape with snow peaks at sunrise, dramatic clouds, travel destination, professional landscape photography", "category": "nature", "ratio": "landscape" },
+  { "id": "gen-05", "prompt": "person meditating in calm sunlit room with plants, wellness and mindfulness, warm natural lighting, serene atmosphere", "category": "health", "ratio": "portrait" }
 ]
