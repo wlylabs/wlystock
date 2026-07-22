@@ -21,10 +21,14 @@ def main():
 
     for item in topics:
         print(f"Generating: {item['id']}")
-        image = generate_image(item["prompt"])
-        raw_path = os.path.join(OUTPUT_DIR, f"{item['id']}_raw.png")
-        image.save(raw_path)
-        print(f"Saved: {raw_path}")
+        try:
+            image = generate_image(item["prompt"])
+            raw_path = os.path.join(OUTPUT_DIR, f"{item['id']}_raw.png")
+            image.save(raw_path)
+            print(f"Saved: {raw_path}")
+        except Exception as e:
+            print(f"Skipped {item['id']} due to error: {e}")
+            continue
 
 if __name__ == "__main__":
     main()
