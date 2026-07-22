@@ -4,7 +4,7 @@ import os
 from config import OUTPUT_DIR
 from caption import get_caption
 
-def load_topics(path="prompts/topics.json"):
+def load_topics(path="../prompts/topics.json")::
     with open(path, "r") as f:
         return json.load(f)
 
