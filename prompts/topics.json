@@ -1,7 +1,51 @@
 [
-  { "id": "gen-01", "prompt": "flat lay of laptop keyboard closed, coffee cup, notebook and pen on wooden desk, top-down view, minimalist workspace", "category": "business", "ratio": "square" },
-  { "id": "gen-02", "prompt": "fresh colorful vegetables and fruits arranged on wooden kitchen table, healthy lifestyle, vibrant colors, professional food photography", "category": "food", "ratio": "square" },
-  { "id": "gen-03", "prompt": "modern smartphone and wireless earbuds on marble table, top-down flat lay, minimalist tech product photography, soft shadows", "category": "technology", "ratio": "square" },
-  { "id": "gen-04", "prompt": "peaceful mountain landscape with snow peaks at sunrise, dramatic clouds, travel destination, professional landscape photography", "category": "nature", "ratio": "landscape" },
-  { "id": "gen-05", "prompt": "silhouette of person sitting cross-legged in meditation pose, seen entirely from behind, no face visible, sunlit window, plants, warm natural lighting", "category": "health", "ratio": "portrait" }
+  { "id": "biz-01", "prompt": "flat lay of laptop keyboard closed, coffee cup, notebook and pen on wooden desk, top-down view, minimalist workspace", "category": "business", "ratio": "square" },
+  { "id": "biz-02", "prompt": "modern office desk with monitor turned off, plant, and stationery, clean minimalist composition, soft natural light", "category": "business", "ratio": "landscape" },
+  { "id": "biz-03", "prompt": "stack of business documents and calculator on desk, flat lay, professional finance concept", "category": "business", "ratio": "square" },
+  { "id": "biz-04", "prompt": "empty modern conference room with chairs and large window, corporate interior, bright daylight", "category": "business", "ratio": "landscape" },
+  { "id": "biz-05", "prompt": "hands typing on laptop keyboard close-up, no face visible, cozy home office, warm lighting", "category": "business", "ratio": "square" },
+
+  { "id": "food-01", "prompt": "fresh colorful vegetables and fruits arranged on wooden kitchen table, healthy lifestyle, vibrant colors, professional food photography", "category": "food", "ratio": "square" },
+  { "id": "food-02", "prompt": "steaming cup of coffee on rustic wooden table, cozy morning light, minimalist food photography", "category": "food", "ratio": "square" },
+  { "id": "food-03", "prompt": "fresh baked bread on cutting board with flour dust, rustic kitchen, warm natural light", "category": "food", "ratio": "square" },
+  { "id": "food-04", "prompt": "colorful smoothie bowl with fruit toppings, top-down flat lay, bright natural light", "category": "food", "ratio": "square" },
+  { "id": "food-05", "prompt": "fresh salad in bowl with cherry tomatoes and greens, top-down view, vibrant healthy food photography", "category": "food", "ratio": "square" },
+  { "id": "food-06", "prompt": "assorted spices in small bowls on dark wooden table, top-down flat lay, culinary photography", "category": "food", "ratio": "square" },
+
+  { "id": "tech-01", "prompt": "modern smartphone and wireless earbuds on marble table, top-down flat lay, minimalist tech product photography, soft shadows", "category": "technology", "ratio": "square" },
+  { "id": "tech-02", "prompt": "wireless headphones and smartwatch on clean white surface, minimalist product photography, soft studio lighting", "category": "technology", "ratio": "square" },
+  { "id": "tech-03", "prompt": "close-up of computer circuit board with glowing blue lights, macro photography, technology concept", "category": "technology", "ratio": "square" },
+  { "id": "tech-04", "prompt": "modern camera and lens on wooden desk, flat lay, photography equipment, soft natural light", "category": "technology", "ratio": "square" },
+
+  { "id": "nature-01", "prompt": "peaceful mountain landscape with snow peaks at sunrise, dramatic clouds, travel destination, professional landscape photography", "category": "nature", "ratio": "landscape" },
+  { "id": "nature-02", "prompt": "calm lake surrounded by pine forest at golden hour, reflection on water, serene landscape photography", "category": "nature", "ratio": "landscape" },
+  { "id": "nature-03", "prompt": "dense green forest with sunlight streaming through trees, misty atmosphere, nature photography", "category": "nature", "ratio": "landscape" },
+  { "id": "nature-04", "prompt": "close-up of dew drops on green leaf, macro nature photography, soft morning light", "category": "nature", "ratio": "square" },
+  { "id": "nature-05", "prompt": "rolling hills with wildflowers under blue sky, countryside landscape, bright daylight", "category": "nature", "ratio": "landscape" },
+  { "id": "nature-06", "prompt": "ocean waves crashing on sandy beach at sunset, dramatic sky, travel photography", "category": "nature", "ratio": "landscape" },
+  { "id": "nature-07", "prompt": "autumn forest path covered with fallen orange leaves, warm golden light, seasonal photography", "category": "nature", "ratio": "landscape" },
+
+  { "id": "health-01", "prompt": "silhouette of person sitting cross-legged in meditation pose, seen entirely from behind, no face visible, sunlit window, plants, warm natural lighting", "category": "health", "ratio": "portrait" },
+  { "id": "health-02", "prompt": "yoga mat rolled up with water bottle and small plant, flat lay, wellness concept, soft natural light", "category": "health", "ratio": "square" },
+  { "id": "health-03", "prompt": "fresh fruit and vitamins arranged on white table, top-down flat lay, healthy lifestyle concept", "category": "health", "ratio": "square" },
+  { "id": "health-04", "prompt": "pair of running shoes on outdoor trail path, close-up, fitness and active lifestyle concept", "category": "health", "ratio": "square" },
+  { "id": "health-05", "prompt": "silhouette of person stretching outdoors at sunrise, seen from behind, no face visible, park setting", "category": "health", "ratio": "portrait" },
+
+  { "id": "home-01", "prompt": "cozy living room corner with armchair, plants, and warm reading lamp, interior design photography", "category": "home", "ratio": "landscape" },
+  { "id": "home-02", "prompt": "minimalist bedroom with white linen bed and soft morning light through curtains, interior photography", "category": "home", "ratio": "landscape" },
+  { "id": "home-03", "prompt": "kitchen counter with fresh herbs in pots and cooking utensils, flat lay, home cooking concept", "category": "home", "ratio": "square" },
+  { "id": "home-04", "prompt": "small potted succulents arranged on windowsill, soft natural light, minimalist home decor", "category": "home", "ratio": "square" },
+
+  { "id": "travel-01", "prompt": "vintage suitcase and map on wooden table, flat lay, travel planning concept, warm light", "category": "travel", "ratio": "square" },
+  { "id": "travel-02", "prompt": "empty cobblestone street in old european town, warm afternoon light, travel photography", "category": "travel", "ratio": "landscape" },
+  { "id": "travel-03", "prompt": "hot air balloons floating over scenic valley at sunrise, travel destination photography", "category": "travel", "ratio": "landscape" },
+  { "id": "travel-04", "prompt": "tropical beach with palm trees and turquoise water, empty shoreline, travel destination photography", "category": "travel", "ratio": "landscape" },
+
+  { "id": "abstract-01", "prompt": "abstract gradient background with soft pastel colors, smooth texture, minimal design backdrop", "category": "abstract", "ratio": "square" },
+  { "id": "abstract-02", "prompt": "close-up texture of flowing water with soft light reflections, abstract nature background", "category": "abstract", "ratio": "landscape" },
+  { "id": "abstract-03", "prompt": "geometric shadow patterns on concrete wall, minimalist architectural abstract photography", "category": "abstract", "ratio": "square" },
+
+  { "id": "edu-01", "prompt": "open notebook with pen and stack of books on wooden desk, top-down flat lay, education concept", "category": "education", "ratio": "square" },
+  { "id": "edu-02", "prompt": "colorful pencils and art supplies arranged on white table, flat lay, creativity concept", "category": "education", "ratio": "square" },
+  { "id": "edu-03", "prompt": "globe and stack of books on wooden desk, warm natural light, education concept", "category": "education", "ratio": "square" }
 ]
