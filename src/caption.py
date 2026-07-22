@@ -2,7 +2,7 @@ import os
 from huggingface_hub import InferenceClient
 from config import HF_TOKEN, OUTPUT_DIR
 
-client = InferenceClient(provider="auto", api_key=HF_TOKEN)
+client = InferenceClient(provider="hf-inference", api_key=HF_TOKEN)
 
 def get_caption(image_path: str) -> str:
     result = client.image_to_text(
