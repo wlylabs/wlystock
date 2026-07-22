@@ -1,9 +1,13 @@
 import os
 
 HF_TOKEN = os.environ.get("HF_TOKEN")
-SD_MODEL_URL = "https://router.huggingface.co/models/black-forest-labs/FLUX.1-dev"
-CAPTION_MODEL_URL = "https://router.huggingface.co/hf-inference/models/Salesforce/blip-image-captioning-base"
 
 OUTPUT_DIR = "output"
-MIN_RESOLUTION = (2400, 2400)
 JPEG_QUALITY = 95
+VARIANTS_PER_TOPIC = 2
+
+RATIO_DIMENSIONS = {
+    "square": (2400, 2400),
+    "landscape": (2560, 1707),
+    "portrait": (1707, 2560),
+}
