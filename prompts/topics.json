@@ -1,7 +1,7 @@
 [
-  { "id": "gen-01", "prompt": "modern minimalist workspace with laptop and coffee, natural light, clean composition, professional photography", "category": "business", "ratio": "landscape" },
+  { "id": "gen-01", "prompt": "flat lay of laptop keyboard closed, coffee cup, notebook and pen on wooden desk, top-down view, minimalist workspace", "category": "business", "ratio": "square" },
   { "id": "gen-02", "prompt": "fresh colorful vegetables and fruits arranged on wooden kitchen table, healthy lifestyle, vibrant colors, professional food photography", "category": "food", "ratio": "square" },
-  { "id": "gen-03", "prompt": "person holding smartphone with glowing digital interface icons, futuristic technology concept, cinematic lighting", "category": "technology", "ratio": "portrait" },
+  { "id": "gen-03", "prompt": "modern smartphone and wireless earbuds on marble table, top-down flat lay, minimalist tech product photography, soft shadows", "category": "technology", "ratio": "square" },
   { "id": "gen-04", "prompt": "peaceful mountain landscape with snow peaks at sunrise, dramatic clouds, travel destination, professional landscape photography", "category": "nature", "ratio": "landscape" },
-  { "id": "gen-05", "prompt": "person meditating in calm sunlit room with plants, wellness and mindfulness, warm natural lighting, serene atmosphere", "category": "health", "ratio": "portrait" }
+  { "id": "gen-05", "prompt": "silhouette of person sitting cross-legged in meditation pose, seen entirely from behind, no face visible, sunlit window, plants, warm natural lighting", "category": "health", "ratio": "portrait" }
 ]
