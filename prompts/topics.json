@@ -3,7 +3,7 @@
   { "id": "biz-02", "prompt": "modern office desk with monitor turned off, plant, and stationery, clean minimalist composition, soft natural light", "category": "business", "ratio": "landscape" },
   { "id": "biz-03", "prompt": "stack of business documents and calculator on desk, flat lay, professional finance concept", "category": "business", "ratio": "square" },
   { "id": "biz-04", "prompt": "empty modern conference room with single long table and large window view, corporate interior, bright daylight, wide shot", "category": "business", "ratio": "landscape" },
-  { "id": "biz-05", "prompt": "hands typing on laptop keyboard close-up, no face visible, cozy home office, warm lighting", "category": "business", "ratio": "square" },
+  { "id": "biz-05", "prompt": "open laptop on wooden desk with warm lamp light, cozy home office at night, no people, cinematic mood", "category": "business", "ratio": "square" },
 
   { "id": "food-01", "prompt": "fresh colorful vegetables and fruits arranged on wooden kitchen table, healthy lifestyle, vibrant colors, professional food photography", "category": "food", "ratio": "square" },
   { "id": "food-02", "prompt": "steaming cup of coffee on rustic wooden table, cozy morning light, minimalist food photography", "category": "food", "ratio": "square" },
